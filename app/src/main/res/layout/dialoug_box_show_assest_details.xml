@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/relavtive1"
+        android:background="@drawable/tool_bar">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/titleTv"
+
+            android:layout_centerVertical="true"
+            android:textColor="@color/white"
+            android:text="Assest Detail"
+
+            style="@style/TextAppearance.AppCompat.Title"
+
+            android:layout_centerHorizontal="true">
+
+        </TextView>
+        <ImageButton
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@null"
+            android:layout_centerVertical="true"
+            android:id="@+id/backBtn"
+            android:src="@drawable/ic_baseline_chevron_left_24">
+
+        </ImageButton>
+
+    </RelativeLayout>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:contentPadding="5dp"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="8dp"
+        app:cardMaxElevation="10dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        android:layout_below="@+id/relavtive1"
+        >
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:textColor="@color/black"
+                    android:text="Asset_ID:"
+                    android:layout_marginEnd="5dp"
+
+                    android:textStyle="bold"
+                    >
+
+                </TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/idTv"
+                    android:layout_marginTop="7dp"
+                    android:textColor="@color/black"
+                    android:text="0100000028"
+
+
+                    >
+
+                </TextView>
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:textColor="@color/black"
+                    android:text="Asset_Title :"
+                    android:layout_marginEnd="5dp"
+
+                    android:textStyle="bold"
+                    >
+
+                </TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Asset_Title"
+                    android:layout_marginTop="7dp"
+                    android:textColor="@color/black"
+                    android:text="DFreezer"
+
+
+                    >
+
+                </TextView>
+
+            </TableRow>
+
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:textColor="@color/black"
+                    android:text="Asset_Pvalue :"
+                    android:layout_marginEnd="5dp"
+
+                    android:textStyle="bold"
+                    >
+
+                </TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Asset_Pvalue"
+                    android:layout_marginTop="7dp"
+                    android:textColor="@color/black"
+                    android:text="100000.00"
+
+
+                    >
+
+                </TextView>
+
+            </TableRow>
+
+
+
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:textColor="@color/black"
+                    android:text="Asset_Cvalue :"
+                    android:layout_marginEnd="5dp"
+
+                    android:textStyle="bold"
+                    >
+
+                </TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Asset_Cvalue"
+                    android:layout_marginTop="7dp"
+                    android:textColor="@color/black"
+                    android:text="100.00"
+
+
+                    >
+
+                </TextView>
+
+
+            </TableRow>
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:textColor="@color/black"
+                    android:text="Department_Flag :"
+                    android:layout_marginEnd="5dp"
+
+                    android:textStyle="bold"
+                    >
+
+                </TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Department_Flag"
+                    android:layout_marginTop="7dp"
+                    android:textColor="@color/black"
+                    android:text="N"
+
+
+                    >
+
+                </TextView>
+
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:textColor="@color/black"
+                    android:text="Customer_Id :"
+                    android:layout_marginEnd="5dp"
+
+                    android:textStyle="bold"
+                    >
+
+                </TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Customer_Id"
+                    android:layout_marginTop="7dp"
+                    android:textColor="@color/black"
+                    android:text="CUST001"
+
+
+                    >
+
+                </TextView>
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:textColor="@color/black"
+                    android:text="Department :"
+                    android:layout_marginEnd="5dp"
+
+                    android:textStyle="bold"
+                    >
+
+                </TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Department"
+                    android:layout_marginTop="7dp"
+                    android:textColor="@color/black"
+                    android:text="null"
+
+
+                    >
+
+                </TextView>
+
+            </TableRow>
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:textColor="@color/black"
+                    android:text="Location_Details :"
+                    android:layout_marginEnd="5dp"
+
+                    android:textStyle="bold"
+                    >
+
+                </TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Location_Details"
+                    android:layout_marginTop="7dp"
+                    android:textColor="@color/colorprimary"
+                    android:text="null"
+
+
+                    >
+
+                </TextView>
+
+            </TableRow>
+        </TableLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

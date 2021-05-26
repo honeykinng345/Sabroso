@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Sabroso</string>
+    <string name="powered_by_zasa_solutions_pvt_ltd">Powered by ZASA Solutions (Pvt.) Ltd.</string>
+    <string name="sabroso_qms">Sabroso QMS</string>
+    <string name="sabroso">Sabroso</string>
+    <string name="qms">QMS</string>
+    <string name="login">Login</string>
+</resources>

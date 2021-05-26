@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+
+    tools:context="LoginActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/tool_bar"
+        android:padding="10dp"
+        android:id="@+id/relavtive1">
+
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="90dp"
+
+            android:layout_centerVertical="true"
+            android:layout_marginTop="20dp"
+            android:id="@+id/logo"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/sabroso_logo"
+            android:padding="5dp"
+
+            >
+
+        </ImageView>
+
+    </RelativeLayout>
+
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/iv"
+        android:background="@drawable/shape_circle01"
+        android:layout_marginTop="170dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_key"
+        android:padding="5dp"
+        android:layout_marginBottom="40dp"
+    >
+
+    </ImageView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/orange"
+        android:layout_below="@+id/relavtive1"
+        android:text="@string/login"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        >
+
+    </TextView>
+
+
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:id="@+id/emailET"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="5dp"
+        android:drawableStart="@drawable/ic_baseline_person_outline_24"
+        android:padding="5dp"
+        android:hint="User Name"
+        android:drawablePadding="7dp"
+        android:background="@drawable/shape_rect02"
+        android:inputType="textEmailAddress"
+        android:autofillHints="email">
+
+    </EditText>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/emailET"
+        android:layout_margin="5dp"
+        android:drawableStart="@drawable/ic_baseline_lock_24"
+        android:padding="5dp"
+        android:hint="Password"
+        android:id="@+id/password"
+        android:drawablePadding="7dp"
+        android:background="@drawable/shape_rect02"
+        android:inputType="textPassword"
+        android:importantForAutofill="no" />
+
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/loginBtn"
+        android:layout_below="@+id/password"
+        android:text="Login"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/orange"
+        android:minWidth="120dp"
+
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+
+    <View
+        android:layout_width="match_parent"
+
+
+        android:layout_alignParentBottom="true"
+
+
+        android:background="@drawable/uper_curve"
+        android:layout_height="31dp">
+
+    </View>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/powered_by_zasa_solutions_pvt_ltd"
+
+        android:layout_margin="5dp"
+        android:id="@+id/noAccountTv"
+        android:layout_alignParentBottom="true"
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+
+
+
+        >
+
+    </TextView>
+
+
+</RelativeLayout>
