@@ -9,7 +9,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="60dp"
         android:background="@drawable/tool_bar"
         android:padding="10dp"
         android:id="@+id/relavtive1">

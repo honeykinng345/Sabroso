@@ -1,4 +1,4 @@
-package com.sabroso.qms;
+ package com.sabroso.qms;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -79,8 +79,7 @@ public class MainActivity extends AppCompatActivity {
     ImageButton ic_logout;
     private CodeScanner mCodeScanner;
     CodeScannerView scannerView;
-    //qr code scanner object
-    private IntentIntegrator qrScan;
+
 
     ProgressDialog progressDialog;
 
@@ -105,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         scannerView = findViewById(R.id.scanner_view);
         mCodeScanner = new CodeScanner(this, scannerView);
 
-        qrScan = new IntentIntegrator(this);
+
         userName = findViewById(R.id.UserName);
         ic_logout = findViewById(R.id.ic_logout);
         QrIv = findViewById(R.id.QrIv);
@@ -190,6 +189,7 @@ public class MainActivity extends AppCompatActivity {
                         } else {
 
                             Helper.SHowToast(MainActivity.this, "" + location.getLongitude());
+                            Helper.SHowToast(MainActivity.this, "" + location.getLatitude());
 
                             try {
                                 lat = String.valueOf(location.getLatitude());
@@ -221,47 +221,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-  /*  private void fetchCustomerList(String username) {
-
-
-        Api api =  ApiClient2.getClient2().create(Api.class);
-
-        Call<customers> customersCall = api.CustomerList(username);
-
-        customersCall.enqueue(new Callback<customers>() {
-            @Override
-            public void onResponse(Call<customers> call, Response<customers> response) {
-
-                if(response.body().getStatus() ==1 ){
-                    Toast.makeText(MainActivity.this, "Done", Toast.LENGTH_SHORT).show();
-customerListDTOS = response.body().getCustomerList();
-
-
-
-
-
-
-
-                   // Helper.transectionActivityToActivity(MainActivity.this, MainActivity.class);
-
-
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<customers> call, Throwable t) {
-
-            }
-        });
-
-
-
-
-    }*/
-
     private void checkUserAssest(String QRScanId) {
 
         progressDialog.setMessage("Processing...");
@@ -277,11 +236,22 @@ customerListDTOS = response.body().getCustomerList();
                 // Helper.SHowToast(MainActivity.this,""+response.body().getMessage());
 
                 if (response.body().getStatus() == 1) {
+                    progressDialog.dismiss();
+
+
 
 
                     if (Helper.fetchUserId(MainActivity.this).equals(response.body().getCustomerDetail().getUserId())) {
-                        progressDialog.dismiss();
-                        //     startActivity(new Intent(MainActivity.this));
+                    Helper.SHowToast(MainActivity.this,""+ Helper.distance(Double.parseDouble(lat)
+                            ,Double.parseDouble(loung),Double.parseDouble(response.body().getCustomerDetail().getCustomerLat()),
+                            Double.parseDouble(response.body().getCustomerDetail().getCustomerLong())));
+
+                   double t = Helper.distance(Double.parseDouble(lat)
+                            ,Double.parseDouble(loung),Double.parseDouble(response.body().getCustomerDetail().getCustomerLat()),
+                            Double.parseDouble(response.body().getCustomerDetail().getCustomerLong()));
+                    Helper.SHowToast(MainActivity.this,""+Helper.milesToMeters(t));
+
+                    if (Helper.milesToMeters(t) <=30){
                         Intent intent = new Intent(MainActivity.this, OpenCameraActivity.class);
                         intent.putExtra("lat", lat);
                         intent.putExtra("loung", loung);
@@ -290,36 +260,24 @@ customerListDTOS = response.body().getCustomerList();
                         intent.putExtra("assetid", QRScanId);
                         startActivity(intent);
 
+                    }else{
+
+                        Helper.OpenLottiDialoug(MainActivity.this,scannerView);
+                    }
+
+
+/*
+
+
+                        //
+*/
+
 
                     } else {
                         fakeVisit(response.body().getCustomerDetail().getUserId(), QRScanId, response.body().getCustomerDetail().getCustomerId());
 
 
                     }
-                    //Helper.SHowToast(MainActivity.this,""+response.body().getMessage());
-
-                    // String checkAssestId = firstTwo(response.body().getCustomerDetail().getCustomerAssetID());
-                    //   Helper.SHowToast(MainActivity.this,""+checkAssestId);
-
-             /*       if (checkAssestId.equals("01")) {
-
-                        for (int i = 0; i < customerListDTOS.size(); i++) {
-                            if (customerListDTOS.get(i).getCustomerId().equals(response.body().getCustomerDetail().getCustomerId())) {
-                                progressDialog.dismiss();
-                                Helper.SHowToast(MainActivity.this, "ID Match");
-                                scannerView.setVisibility(View.GONE);
-                            } else {
-                                progressDialog.dismiss();
-                                Helper.SHowToast(MainActivity.this, "Not Match ");
-                            }
-                        }
-
-                        // Helper.SHowToast(MainActivity.this,"Done");
-
-                    } else {
-                        progressDialog.dismiss();
-                        Helper.SHowToast(MainActivity.this, "id is O2");
-                    }*/
 
 
                 } else {
@@ -513,10 +471,9 @@ customerListDTOS = response.body().getCustomerList();
             public void onResponse(Call<Asset_Detail> call, Response<Asset_Detail> response) {
 
                 if (response.body().getStatus() == 1) {
-
-
+                    progressDialog.dismiss();
                     Helper.SHowToast(MainActivity.this, response.body().getMessage());
-                    showDialoug(response.body());
+                    Helper.showDialoug(response.body(),MainActivity.this,scannerView,mCodeScanner);
                 } else {
                     progressDialog.dismiss();
                     Helper.SHowToast(MainActivity.this, "UnknownError");
@@ -534,48 +491,7 @@ customerListDTOS = response.body().getCustomerList();
 
     }
 
-    private void showDialoug(Asset_Detail response) {
 
-        progressDialog.setMessage("Fetch Asset Detail..");
-
-        TextView idTv, Asset_Title, Asset_Pvalue, Asset_Cvalue, Department_Flag, Customer_Id, Department, Location_Details;
-        View view = LayoutInflater.from(this).inflate(R.layout.dialoug_box_show_assest_details, null);
-        ImageButton imageButton = view.findViewById(R.id.backBtn);
-        idTv = view.findViewById(R.id.idTv);
-        Asset_Title = view.findViewById(R.id.Asset_Title);
-        Asset_Pvalue = view.findViewById(R.id.Asset_Pvalue);
-        Asset_Cvalue = view.findViewById(R.id.Asset_Cvalue);
-        Department_Flag = view.findViewById(R.id.Department_Flag);
-        Customer_Id = view.findViewById(R.id.Customer_Id);
-        Department = view.findViewById(R.id.Department);
-        Location_Details = view.findViewById(R.id.Location_Details);
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setView(view);
-        final AlertDialog dialog = builder.create();
-
-        idTv.setText(response.getAssetDetail().getAssetId());
-        Asset_Title.setText(response.getAssetDetail().getAssetTitle());
-        Asset_Pvalue.setText(String.valueOf(response.getAssetDetail().getAssetPvalue()));
-        Asset_Cvalue.setText(String.valueOf(response.getAssetDetail().getAssetCvalue()));
-        Department_Flag.setText("" + response.getAssetDetail().getDepartmentFlag());
-        Customer_Id.setText("" + response.getAssetDetail().getCustomerId());
-        Department.setText("" + response.getAssetDetail().getDepartment());
-        Location_Details.setText("" + response.getAssetDetail().getLocationDetails());
-        progressDialog.dismiss();
-        scannerView.setVisibility(View.GONE);
-        mCodeScanner.releaseResources();
-        scannerView.animate();
-        dialog.show();
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-
-
-    }
 
     @SuppressLint("MissingPermission")
     private void requestNewLocationData() {
@@ -600,8 +516,9 @@ customerListDTOS = response.body().getCustomerList();
         public void onLocationResult(LocationResult locationResult) {
             Location mLastLocation = locationResult.getLastLocation();
 
-            Helper.SHowToast(MainActivity.this, "" + mLastLocation.getLatitude());
             Helper.SHowToast(MainActivity.this, "" + mLastLocation.getLongitude());
+
+            Helper.SHowToast(MainActivity.this, "" + mLastLocation.getLatitude());
             try {
                 addresses = geocoder.getFromLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude(), 10);
                 lat = String.valueOf(mLastLocation.getLatitude());

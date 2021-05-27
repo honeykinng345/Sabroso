@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@drawable/tool_bar"
+        android:background="@drawable/login_shape"
         android:padding="10dp"
         android:id="@+id/relavtive1">
 
@@ -118,7 +118,7 @@
 
 
         android:background="@drawable/uper_curve"
-        android:layout_height="31dp">
+        android:layout_height="35dp">
 
     </View>
 
@@ -131,7 +131,7 @@
         android:layout_margin="5dp"
         android:id="@+id/noAccountTv"
         android:layout_alignParentBottom="true"
-        android:textSize="15sp"
+        android:textSize="12sp"
         android:layout_marginTop="10dp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"

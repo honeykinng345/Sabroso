@@ -54,21 +54,57 @@
 
     </com.airbnb.lottie.LottieAnimationView>
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="200dp"
+        android:layout_marginTop="10dp"
+android:visibility="gone"
+
+        app:lottie_rawRes="@raw/cheat"
+        android:id="@+id/cheat"
+        app:lottie_autoPlay="true"
+
+        app:lottie_loop="true"
+
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/relavtive1"
+        android:layout_height="210dp">
+
+    </com.airbnb.lottie.LottieAnimationView>
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_centerVertical="true"
      android:textStyle="bold"
         android:layout_height="wrap_content"
-        android:id="@+id/thanksTv"
+        android:id="@+id/t"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="40dp"
         android:layout_marginTop="7dp"
         android:textColor="@color/colorprimary"
         android:textSize="17dp"
         android:text="This customer is not belongs to you"
 
         android:layout_below="@+id/checkAnimation">
+
+    </TextView>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_centerVertical="true"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:id="@+id/thanksTv"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:visibility="gone"
+        android:layout_marginTop="7dp"
+        android:textColor="@color/colorprimary"
+        android:textSize="17dp"
+        android:text="This customer is not belongs to you"
+
+        android:layout_below="@+id/cheat">
 
     </TextView>
 

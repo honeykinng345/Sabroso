@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.text.TextUtils;
@@ -52,6 +53,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+       /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            getWindow().setNavigationBarColor(getResources().getColor(R.color.colorprimary));
+        }*/
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         databaseHelper = new SQLiteHandler(LoginActivity.this);
         progressDialog = new ProgressDialog(LoginActivity.this);
@@ -131,7 +135,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     sessionManager.setLogin(true);
                     editor.putString("UserName", response.body().getUserDetails().getUserName().toString());
-                    editor.putString("Field_Flag", response.body().getUserDetails().getFieldFlag().toString());
+                    editor.putString("Field_Flag",response.body().getUserDetails().getFieldFlag().toString());
                     editor.commit();
 
                     finish();
